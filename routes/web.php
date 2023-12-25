@@ -37,23 +37,29 @@ Route::middleware('auth')->group(function () {
 
 Route::redirect('/', '/prototype/login');
 
-Route::prefix('prototype')->group(function () {
+Route::prefix('prototype')->name('prototype.')->group(function () {
 
     route::get('/login', function () {
         return Inertia::render('Prototype/Login');
-    })->name('prototype.login');
+    })->name('login');
 
     route::get('/register', function () {
         return Inertia::render('Prototype/Register');
-    })->name('prototype.register');
+    })->name('register');
 
     route::get('/dashboard', function () {
         return Inertia::render('Prototype/Dashboard');
-    })->name('prototype.dashboard');
+    })->name('dashboard');
 
     route::get('/subscriptionPlan', function () {
         return Inertia::render('Prototype/SubscriptionPlan');
-    })->name('prototype.SubscriptionPlan');
+    })->name('SubscriptionPlan');
+
+    route::get('/movie/{slug}', function () {
+        return Inertia::render('Prototype/Movie/Show');
+    })->name('movie.show');
+
+
 });
 
 require __DIR__ . '/auth.php';

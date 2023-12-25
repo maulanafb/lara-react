@@ -18,6 +18,7 @@ export default function Dashboard() {
         <Authenticated>
             <Head>
                 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
+                <title>Dashboard</title>
             </Head>
             <div>
                 <div className="font-semibold text-[22px] text-black mb-4">Featured Movies</div>

@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react"
 export default function FeaturedMovies({ slug, name, category, thumbnail, rating }) {
     return (
         <div className="absolute overflow-hidden group mr-[30px]" >
@@ -22,7 +23,7 @@ export default function FeaturedMovies({ slug, name, category, thumbnail, rating
                     <img src="/icons/ic_play.svg" width="50" alt="" />
                 </div>
             </div>
-            <a href={slug} className="inset-0 absolute z-50"></a>
+            <Link href={route('prototype.movie.show', slug)} className="inset-0 absolute z-50"></Link>
         </div>
     )
 }
