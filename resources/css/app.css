@@ -1,5 +1,6 @@
 @import "input.css";
 @import "button.css";
+@import "sidebar.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,4 +44,19 @@
         border-color: transparent;
         --tw-ring-color: transparent;
     }
+}
+
+/* Add this to your Tailwind CSS configuration or styles */
+.scrollbar-hide {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent; /* hide scrollbar on Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    width: 0; /* Remove scrollbar space on Chrome/Safari */
+    background-color: transparent; /* hide scrollbar on Chrome/Safari */
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+    background-color: transparent; /* hide scrollbar on Chrome/Safari */
 }
