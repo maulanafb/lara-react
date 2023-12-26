@@ -4,16 +4,8 @@ import { Head } from "@inertiajs/react"
 import FeaturedMovies from "@/Components/FeaturedMovies"
 import BrowseMovies from "@/Components/MovieCard"
 import MovieCard from "@/Components/MovieCard"
-export default function Dashboard({ auth }) {
-    const flickityOption = {
-        "cellAlign": "left",
-        "contain": true,
-        "groupCells": 1,
-        "wrapAround": false,
-        "pageDots": false,
-        "prevNextButtons": false,
-        "draggable": ">1"
-    }
+export default function Dashboard({ auth, coba }) {
+
     return (
         <Authenticated auth={auth}>
             <Head>

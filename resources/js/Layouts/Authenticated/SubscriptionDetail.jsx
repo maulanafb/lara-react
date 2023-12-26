@@ -1,9 +1,8 @@
 export default function SubscriptionDetail({ name, isPremium, remainingActiveDays, activeDays }) {
     const remainingDays = activeDays - remainingActiveDays;
-
     const loadingProgress = () => {
         const progress = remainingActiveDays / activeDays;
-        console.log(progress)
+
         if (progress < 0.25) {
             return 'w-3/12';
         } else if (progress < 0.5) {

@@ -47,7 +47,7 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getIsActiveAttribut()
+    public function getIsActiveAttribute()
     {
         if (!$this->LastActiveUserSubscription) {
             return false;
