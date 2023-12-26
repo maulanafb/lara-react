@@ -24,7 +24,7 @@ export default function Dashboard({ auth, featuredMovies, movies }) {
                 <div className="font-semibold text-[22px] text-black mb-4">Featured Movies</div>
                 <Flickity className="gap-[30px] __scroll-selector" options={flickityOption}>
                     {featuredMovies.map((featuredMovie, i) => (
-                        <FeaturedMovies name={featuredMovie.name} slug={`${featuredMovie.slug}${i}`} thumbnail={featuredMovie.thumbnail} category={featuredMovie.category} rating={featuredMovie.rating} key={featuredMovie.slug + 'awdsadaw'} />
+                        <FeaturedMovies name={featuredMovie.name} slug={`${featuredMovie.slug}`} thumbnail={featuredMovie.thumbnail} category={featuredMovie.category} rating={featuredMovie.rating} key={featuredMovie.slug + 'awdsadaw'} />
                     ))}
                 </Flickity>
             </div>
@@ -33,7 +33,7 @@ export default function Dashboard({ auth, featuredMovies, movies }) {
                 <div className="__scroll-selector">
                     <Flickity options={flickityOption}>
                         {movies.map((movie, i) => (
-                            <MovieCard key={i} title={`${movie.name}`} slug={`${movie.slug}${i}`} category={movie.category} thumbnail={movie.thumbnail} />
+                            <MovieCard key={i} title={`${movie.name}`} slug={`${movie.slug}`} category={movie.category} thumbnail={movie.thumbnail} />
                         ))}
                     </Flickity>
                 </div>
