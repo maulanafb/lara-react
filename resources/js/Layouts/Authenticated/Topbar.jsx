@@ -25,8 +25,8 @@ export default function Topbar() {
                     <div className="bg-white rounded-2xl border border-l-alerange text-black font-medium flex flex-col gap-1 absolute z-[999] right-0 top-[80px] min-w-[180px] hidden overflow-hidden"
                         ref={dropdownTarget}>
                         <a href="#!" className="transition-all hover:bg-sky-100 p-4">Dashboard</a>
-                        <a href="#!" className="transition-all hover:bg-sky-100 p-4">Settings</a>
-                        <a href="sign_in.html" className="transition-all hover:bg-sky-100 p-4">Sign Out</a>
+                        <a href={route('profile.edit')} className="transition-all hover:bg-sky-100 p-4">Settings</a>
+                        <a href={route('logout')} className="transition-all hover:bg-sky-100 p-4">Sign Out</a>
                     </div>
                 </div>
             </div>

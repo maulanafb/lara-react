@@ -22,9 +22,6 @@ export default function Register() {
         };
     }, []);
 
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.value)
-    }
 
     const submit = (e) => {
         e.preventDefault();
