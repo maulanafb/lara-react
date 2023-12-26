@@ -16,7 +16,7 @@ import PropTypes from 'prop-types'
 //     isError: PropTypes.bool
 // }
 
-export default forwardRef(function CInput({ type = 'text', className = '', isFocused = false, isError, variant, ...props }, ref) {
+export default forwardRef(function CInput({ value, type = 'text', className = '', isFocused = false, isError, variant, ...props }, ref) {
     const input = ref ? ref : useRef();
 
     useEffect(() => {
@@ -28,6 +28,7 @@ export default forwardRef(function CInput({ type = 'text', className = '', isFoc
     return (
         <input
             {...props}
+            value={value}
             type={type}
             className={
                 `rounded-2xl bg-form-bg py-[13px] px-7 w-full ${isError && 'input-error'} input-${variant} ${className}`
