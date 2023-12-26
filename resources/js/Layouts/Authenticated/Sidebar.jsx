@@ -1,15 +1,17 @@
-import { Link } from '@inertiajs/react'
+import { Link, } from '@inertiajs/react'
 export function Sidebar() {
+
     return (
         <aside className="fixed z-50 w-[300px] h-full scrollbar-hide overflow-auto">
             <div className="flex flex-col p-[30px] pr-0 border-r border-gray-[#F1F1F1]  h-full">
                 <Link href="/">
+                    {/* {console.log(route())} */}
                     <img src="/images/moonton.svg" alt="" />
                 </Link>
                 <div className="links flex flex-col mt-[60px] h-full gap-[50px] ">
                     <div>
                         <div className="text-gray-1 text-sm mb-4">Menu</div>
-                        <Link href="/" className="side-link active">
+                        <Link href={route('prototype.dashboard')} className={`side-link active ${route}`}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="Iconly/Bulk/Home">
