@@ -1,6 +1,14 @@
 import CButton from "./CButton";
 
-export default function SubscriptionCard({ id, name, price, durationInMonth, features, isPremium, onSelectSubscription }) {
+export default function SubscriptionCard({
+    id,
+    name,
+    price,
+    durationInMonth,
+    features,
+    isPremium,
+    onSelectSubscription
+}) {
     return (
         <>
             {/* Basic  */}
