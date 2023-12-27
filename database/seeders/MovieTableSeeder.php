@@ -20,7 +20,8 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://youtube.com/watch?v=6hB3S9bIaco',
                 'thumbnail' => 'https://th.bing.com/th/id/OIP.tdaEZbIrBom8UbIs7kGlWQHaEK?rs=1&pid=ImgDetMain',
-                'rating' => 9.3
+                'rating' => 9.3,
+                'is_featured' => true,
             ],
             [
                 'name' => "The Godfather",
@@ -28,7 +29,8 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://youtube.com/watch?v=6hB3S9bIaco',
                 'thumbnail' => 'https://i1.wp.com/maroonersrock.com/wp-content/uploads/2020/10/godfather.jpg?ssl=1',
-                'rating' => 8.3
+                'rating' => 8.3,
+                'is_featured' => false,
             ],
             [
                 'name' => "The Godfather Part2",
@@ -36,7 +38,8 @@ class MovieTableSeeder extends Seeder
                 'category' => 'Drama',
                 'video_url' => 'https://youtube.com/watch?v=6hB3S9bIaco',
                 'thumbnail' => 'https://2.bp.blogspot.com/-sZ_fCaTZEiE/V0_i6OugQkI/AAAAAAAAAFM/oevjkl_Dw_EN6GAW1lt-uRm0KiA6PnnPgCKgB/s1600/The%2BGodfather%2BPart%2BII%2B1976%2Bposter.jpg',
-                'rating' => 7.3
+                'rating' => 7.3,
+                'is_featured' => false,
             ],
         ];
         Movie::insert($movies);

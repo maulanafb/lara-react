@@ -6,14 +6,14 @@ export default function Authenticated({ auth, user, children }) {
         <>
             <div className="mx-auto max-w-screen hidden lg:block">
                 {/* Start : sidebar  */}
-                <Sidebar user={user} />
+                <Sidebar user={auth.user} />
                 {/* end : sidebar  */}
 
                 {/* Start Content  */}
                 <div className="ml-[300px] px-[50px]">
                     <div className="py-10 flex flex-col gap-[50px]">
                         {/* Start topBar */}
-                        <Topbar name={user.name} />
+                        <Topbar name={auth.user.name} />
                         {/* End topBar */}
                         <main>{children}</main>
                     </div>
