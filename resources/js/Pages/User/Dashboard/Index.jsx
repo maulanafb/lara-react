@@ -4,7 +4,9 @@ import { Head } from "@inertiajs/react"
 import FeaturedMovies from "@/Components/FeaturedMovies"
 import BrowseMovies from "@/Components/MovieCard"
 import MovieCard from "@/Components/MovieCard"
-export default function Dashboard({ auth, featuredMovies, movies }) {
+import { Link, usePage, } from '@inertiajs/react'
+
+export default function Dashboard({ featuredMovies, movies }) {
     const flickityOption = {
         "cellAlign": "left",
         "contain": true,
@@ -14,8 +16,9 @@ export default function Dashboard({ auth, featuredMovies, movies }) {
         "prevNextButtons": false,
         "draggable": ">1"
     }
+    const { auth } = usePage().props
     return (
-        <Authenticated user={auth.user}>
+        <Authenticated user={auth.user} auth={auth}>
             <Head>
                 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css" />
                 <title>Dashboard</title>

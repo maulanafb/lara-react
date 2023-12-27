@@ -1,5 +1,6 @@
 import CButton from "@/Components/CButton";
 import CInput from "@/Components/CInput";
+import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import Authenticated from "@/Layouts/Authenticated/Index"
@@ -16,8 +17,16 @@ export default function Create() {
     });
 
     const onHandleChange = (event) => {
-        setData(event.target.name, event.target.type === 'file' ? event.target.file[0] : event.target.value)
-    }
+        const { name, type, value, files } = event.target;
+
+        // Use a conditional to check if the input type is a file
+        setData(name, type === 'file' ? files[0] : value);
+
+        // Handle checkbox state separately
+        if (type === 'checkbox') {
+            setData('is_featured', event.target.checked);
+        }
+    };
 
     const submit = (e) => {
         e.preventDefault();
@@ -31,7 +40,7 @@ export default function Create() {
             <h1 className="text-xl">Insert a new Movie</h1>
             <hr className="mb-4" />
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} >
                 <InputLabel className="text-base block mb-2"
                     value={'Movie Name'}
                     htmlFor="name"
@@ -40,7 +49,7 @@ export default function Create() {
                     id="name"
                     value={data.name}
                     autoComplete="current-name"
-                    onChange={(e) => setData('name', e.target.value)}
+                    onChange={onHandleChange}
                     type="text"
                     name="name"
                     variant="primary-outline"
@@ -57,7 +66,7 @@ export default function Create() {
                     id="category"
                     value={data.category}
                     autoComplete="current-category"
-                    onChange={(e) => setData('category', e.target.value)}
+                    onChange={onHandleChange}
                     type="text"
                     name="category"
                     variant="primary-outline"
@@ -74,7 +83,7 @@ export default function Create() {
                     id="video_url"
                     value={data.video_url}
                     autoComplete="current-video_url"
-                    onChange={(e) => setData('video_url', e.target.value)}
+                    onChange={onHandleChange}
                     type="text"
                     name="video_url"
                     variant="primary-outline"
@@ -89,9 +98,9 @@ export default function Create() {
                 />
                 <CInput
                     id="thumbnail"
-                    value={data.thumbnail}
+                    // value={data.thumbnail}
                     autoComplete="current-thumbnail"
-                    onChange={(e) => setData('thumbnail', e.target.value)}
+                    onChange={onHandleChange}
                     type="file"
                     name="thumbnail"
                     variant="primary-outline"
@@ -108,7 +117,7 @@ export default function Create() {
                     id="rating"
                     value={data.rating}
                     autoComplete="current-rating"
-                    onChange={(e) => setData('rating', e.target.value)}
+                    onChange={onHandleChange}
                     type="number"
                     name="rating"
                     variant="primary-outline"
@@ -116,6 +125,17 @@ export default function Create() {
                     className="rounded-2xl bg-form-bg py-[13px] px-7 w-full  focus:outline-none"
                 />
                 <InputError message={errors.rating} className="mt-2" />
+
+                <div className="flex flex-row mt-4 items-center">
+                    <InputLabel className="text-base block mr-3 mt-1"
+                        value={'Movie Featured?'}
+                        htmlFor="rating"
+                    />
+                    <Checkbox name="is_featured" checked={data.is_featured} onChange={onHandleChange} />
+                </div>
+                <CButton type="submit" className="mt-4" processing={processing}>
+                    Save
+                </CButton>
             </form>
         </Authenticated>
     )

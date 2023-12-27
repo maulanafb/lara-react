@@ -1,7 +1,10 @@
 import CButton from "@/Components/CButton";
+import FlashMessage from "@/Components/FlashMessage";
 import Authenticated from "@/Layouts/Authenticated/Index"
 import { Link, usePage, } from '@inertiajs/react'
 export default function Index() {
+    const { flashMessage } = usePage().props
+    console.log(flashMessage.message)
     const { auth } = usePage().props
 
     return (<>
@@ -11,6 +14,7 @@ export default function Index() {
                     Insert New Movie
                 </CButton>
             </Link>
+            {flashMessage && (<FlashMessage message={flashMessage.message} />)}
         </Authenticated>
     </>)
 }

@@ -4,8 +4,11 @@ import { Head } from "@inertiajs/react"
 import FeaturedMovies from "@/Components/FeaturedMovies"
 import BrowseMovies from "@/Components/MovieCard"
 import MovieCard from "@/Components/MovieCard"
-export default function Dashboard({ auth, coba }) {
+import { usePage, } from '@inertiajs/react'
 
+export default function Dashboard({ auth }) {
+    const { auth } = usePage().props;
+    console.log(auth)
     return (
         <Authenticated auth={auth}>
             <Head>
