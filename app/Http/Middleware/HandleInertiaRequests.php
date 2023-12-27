@@ -60,6 +60,9 @@ class HandleInertiaRequests extends Middleware
             'flashMessage' => [
                 'message' => Session::get('message'),
                 'type' => session::get('type'),
+            ],
+            'env' => [
+                'MIDTRANS_CLIENTKEY' => env('MIDTRANS_CLIENTKEY')
             ]
         ];
     }
