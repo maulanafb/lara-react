@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/react"
 export default function MovieCard({ title, category, slug, thumbnail }) {
     return (
         <div className="absolute group overflow-hidden mr-[30px]" >
-            <img src={thumbnail}
+            <img src={`/storage/${thumbnail}`}
                 className="object-cover rounded-[30px] h-[340px] w-[250px]" alt="" />
             <div
                 className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black rounded-bl-[28px] rounded-br-[28px]">

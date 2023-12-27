@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Movie\Store;
+use App\Http\Requests\Admin\Movie\Update;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return inertia('Admin/Movie/Index');
+        $movies = Movie::withTrashed()->orderBy('deleted_at')->get();
+        return inertia('Admin/Movie/Index', compact('movies'));
     }
 
     /**
@@ -75,15 +77,39 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return inertia('Admin/Movie/Edit', compact('movie'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Update $request, Movie $movie)
     {
-        //
+        // dd($request);
+        $data = $request->validated();
+
+        if ($request->hasFile('thumbnail')) {
+            $thumbnailFile = $request->file('thumbnail');
+
+            // Generate a unique filename for the uploaded thumbnail
+            $fileName = uniqid('movie_') . '_' . time() . '.' . $thumbnailFile->getClientOriginalExtension();
+
+            // Move the file to the 'public/movies' directory with the generated filename
+            $thumbnailFile->move(public_path('storage/movies'), $fileName);
+
+            // Update the 'thumbnail' field in the $data array with the storage path
+            $data['thumbnail'] = 'movies/' . $fileName;
+        } else {
+            $data['thumbnail'] = $movie->thumbnail;
+        }
+
+        $movie->update($data);
+
+        return redirect(route('admin.dashboard.movie.index'))->with([
+            'message' => "berhasil update movie",
+            'type' => "success"
+        ]);
     }
 
     /**
@@ -91,6 +117,19 @@ class MovieController extends Controller
      */
     public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+        return redirect(route('admin.dashboard.movie.index'))->with([
+            'message' => 'Berhasil Hapus Movie',
+            'type' => 'success'
+        ]);
+    }
+
+    public function restore($movie)
+    {
+        Movie::withTrashed()->find($movie)->restore();
+        return redirect(route('admin.dashboard.movie.index'))->with([
+            'message' => "Berhasil Mengembalikan MOvie",
+            'type' => 'success'
+        ]);
     }
 }
