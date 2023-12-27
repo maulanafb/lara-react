@@ -6,7 +6,7 @@ import BrowseMovies from "@/Components/MovieCard"
 import MovieCard from "@/Components/MovieCard"
 import { usePage, } from '@inertiajs/react'
 
-export default function Dashboard({ auth }) {
+export default function Dashboard() {
     const { auth } = usePage().props;
     console.log(auth)
     return (
